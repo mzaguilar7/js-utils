@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS Tools</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #181b24;
+    --border: #2a2f3a;
+    --text: #e6e8ee;
+    --muted: #9aa3b2;
+    --accent: #4f8cff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  header {
+    padding: 48px 24px 24px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0 0 8px;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+  }
+  header p {
+    margin: 0;
+    color: var(--muted);
+  }
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .15s, transform .15s;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .card h2 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+  }
+  .card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  footer {
+    text-align: center;
+    padding: 32px 24px 48px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>JS Tools</h1>
+  <p>A small collection of browser-side JavaScript utilities.</p>
+</header>
+
+<main>
+  <div class="grid" id="tool-grid"></div>
+</main>
+
+<footer>
+  Built with plain JS · <a href="https://github.com/" target="_blank" rel="noopener">Source</a>
+</footer>
+
+<script>
+  // ── Add your tools here ─────────────────────────────
+  const tools = [
+    {
+      name: "Check / Uncheck",
+      description: "Toggle all checkboxes in a form.",
+      href: "checkuncheck.html",   // or "checkuncheck.js" if you want raw file
+      file: "checkuncheck.js"
+    },
+    // {
+    //   name: "Another Tool",
+    //   description: "What it does.",
+    //   href: "another-tool.html"
+    // },
+  ];
+  // ────────────────────────────────────────────────────
+
+  const grid = document.getElementById("tool-grid");
+
+  tools.forEach(tool => {
+    const a = document.createElement("a");
+    a.className = "card";
+    a.href = tool.href;
+
+    const h2 = document.createElement("h2");
+    h2.textContent = tool.name;
+
+    const p = document.createElement("p");
+    p.textContent = tool.description;
+
+    a.appendChild(h2);
+    a.appendChild(p);
+    grid.appendChild(a);
+  });
+</script>
+
+</body>
+</html>
